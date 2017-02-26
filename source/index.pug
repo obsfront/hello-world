@@ -1,9 +1,15 @@
-html
+html(ng-app="helloapp")
   head
     title Hello-world
     link(rel="stylesheet",href="../bower_components/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet",href="css/main.min.css")
-  body
+  body(ng-controller="helloappctrl")
     .jumbotron
-      h1.display-3 Hello world!
+      h1.display-3 {{app}}
       p.lead Essa é uma aplicação teste para a minha preparação para o cargo de Front-End Sênior.
+
+    script(src="../bower_components/jquery/dist/jquery.min.js")
+    script(src="../bower_components/tether/dist/js/tether.min.js")
+    script(src="../bower_components/angular/angular.min.js")
+    script(src="js/main.js")
+    footer

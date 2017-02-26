@@ -30,7 +30,6 @@ gulp.task('jshint', function(){
 
 gulp.task('uglify', function(){
   return gulp.src('./source/js/*.js')
-  .pipe(uglify())
   .pipe(gulp.dest('./dist/js/'))
 })
 

@@ -1,14 +1,19 @@
 
-<html>
+<html ng-app="helloapp">
   <head>
     <title>Hello-world</title>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/main.min.css"/>
   </head>
-  <body>
+  <body ng-controller="helloappctrl">
     <div class="jumbotron">
-      <h1 class="display-3">Hello world!</h1>
+      <h1 class="display-3">{{app}}</h1>
       <p class="lead">Essa é uma aplicação teste para a minha preparação para o cargo de Front-End Sênior.</p>
     </div>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/tether/dist/js/tether.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="js/main.js"></script>
+    <footer></footer>
   </body>
 </html>
