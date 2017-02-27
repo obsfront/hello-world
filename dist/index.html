@@ -2,17 +2,63 @@
 <html ng-app="helloapp">
   <head>
     <title>Hello-world</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/main.min.css"/>
   </head>
   <body ng-controller="helloappctrl">
-    <div class="jumbotron">
-      <h1 class="display-3">{{app}}</h1>
-      <p class="lead">Essa é uma aplicação teste para a minha preparação para o cargo de Front-End Sênior.</p>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="jumbotron">
+            <h1 class="display-3">{{app}}</h1>
+            <p class="lead">Essa é uma aplicação teste para a minha preparação para o cargo de Front-End Sênior.<br>A aplicação compreende a distribuição de usuários em uma tabela e a construção de um mapa utilizando a geolocalização deles.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-hover">
+            <thead class="thead-inverse">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>E-mail</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Website</th>
+                <th>Company</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="user in users">
+                <td scope="row">{{user.id}}</td>
+                <td scope="row">{{user.name}}</td>
+                <td scope="row">{{user.username}}</td>
+                <td scope="row">{{user.email}}</td>
+                <td scope="row">{{user.address.street}}</td>
+                <td scope="row">{{user.phone}}</td>
+                <td scope="row">{{user.website}}</td>
+                <td scope="row">{{user.company.name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><ng-map zoom="2">
+<marker ng-repeat="user in users" position="{{user.address.geo.lat}},{{user.address.geo.lng}}" title="{{user.name}}"></marker>
+</ng-map>
+        </div>
+      </div>
     </div>
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/tether/dist/js/tether.min.js"></script>
     <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT6W5XGWFmhBXPrhuEA2msjO0O73Qo-nw"></script>
     <script src="js/main.js"></script>
     <footer></footer>
   </body>

@@ -1,15 +1,54 @@
 html(ng-app="helloapp")
   head
     title Hello-world
+
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+
     link(rel="stylesheet",href="../bower_components/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet",href="css/main.min.css")
   body(ng-controller="helloappctrl")
-    .jumbotron
-      h1.display-3 {{app}}
-      p.lead Essa é uma aplicação teste para a minha preparação para o cargo de Front-End Sênior.
+    .container
+      .row
+        .col-xs-12
+          .jumbotron
+            h1.display-3 {{app}}
+            p.lead Essa é uma aplicação teste para a minha preparação para o cargo de Front-End Sênior.<br>A aplicação compreende a distribuição de usuários em uma tabela e a construção de um mapa utilizando a geolocalização deles.
+      .row
+        .col-md-12
+          table.table.table-hover
+            thead.thead-inverse
+              tr
+                th ID
+                th Name
+                th Username
+                th E-mail
+                th Address
+                th Phone
+                th Website
+                th Company
+            tbody
+              tr(ng-repeat="user in users")
+                td(scope="row") {{user.id}}
+                td(scope="row") {{user.name}}
+                td(scope="row") {{user.username}}
+                td(scope="row") {{user.email}}
+                td(scope="row") {{user.address.street}}
+                td(scope="row") {{user.phone}}
+                td(scope="row") {{user.website}}
+                td(scope="row") {{user.company.name}}
+      .row
+        .col-md-12
+          <ng-map zoom="2">
+            <marker ng-repeat="user in users" position="{{user.address.geo.lat}},{{user.address.geo.lng}}" title="{{user.name}}"></marker>
+          </ng-map>
 
     script(src="../bower_components/jquery/dist/jquery.min.js")
     script(src="../bower_components/tether/dist/js/tether.min.js")
     script(src="../bower_components/angular/angular.min.js")
+    script(src="../bower_components/ngmap/build/scripts/ng-map.min.js")
+
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT6W5XGWFmhBXPrhuEA2msjO0O73Qo-nw")
+
     script(src="js/main.js")
     footer
